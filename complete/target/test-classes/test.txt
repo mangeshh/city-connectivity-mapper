@@ -1,7 +1,0 @@
-P,K
-L,M
-N,M
-Boston, New York
-Philadelphia, Newark
-Newark, Boston
-Trenton, Albany
