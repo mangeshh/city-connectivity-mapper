@@ -15,3 +15,9 @@ so implemented 2nd API "/connected", this will give better performance in stress
 2nd API is ~3 times better in response time, for now all requests are handled by this 2nd API only.
 To hit the 2nd API we run - http://localhost:8080/connected?origin=Boston&destination=Newark
 request mapping for 2nd API is "/connected".
+
+
+github - checkout
+
+GIT URL - https://github.com/mangeshh/city-connectivity-mapper/tree/master/complete
+import as maven project
