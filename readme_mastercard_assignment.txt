@@ -23,3 +23,5 @@ GIT URL - https://github.com/mangeshh/city-connectivity-mapper/tree/master/compl
 import as maven project
 
 SWAGGER - http://localhost:8080/swagger-ui.html
+
+NOTE : input file with city pairs (New York, Newak...) is specified inside application.properties ans key is cache.input.file
