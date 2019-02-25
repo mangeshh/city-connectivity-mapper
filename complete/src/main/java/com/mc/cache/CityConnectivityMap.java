@@ -279,39 +279,4 @@ public class CityConnectivityMap implements CityMap {
 		}
 	}
 
-	public static void main(String[] args) {
-		CityConnectivityMap map = new CityConnectivityMap();
-		map.put("A", "B");
-		map.put("B", "F");
-		map.put("C", "D");
-		map.put("D", "E");
-		map.put("E", "F");
-		map.put("F", "G");
-		map.put("G", "F");
-		map.put("G", "I");
-
-		map.put("Boston", "New York");
-		map.put("Philadelphia", "Newark");
-		map.put("Newark", "Boston");
-		map.put("Trenton", "Albany");
-
-		boolean[][] ans = map.getMatrixTable();
-		System.out.println();
-		CityConnectivityMap.print(ans);
-		System.out.println("----------------------------------");
-
-		long st = System.nanoTime();
-		System.out.println(map.isConnected("G", "I"));
-		long ed = System.nanoTime();
-		System.out.println(map.isConnectedQuickCheck("A", "I"));
-		long ed1 = System.nanoTime();
-		System.out.println("first call " + (ed - st));
-		System.out.println("second call " + (ed1 - ed));
-
-		System.out.println(map.isConnected("I", "A"));
-
-		System.out.println(map.isConnectedQuickCheck("New York1", "Newark"));
-
-	}
-
 }
