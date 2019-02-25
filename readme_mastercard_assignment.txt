@@ -21,3 +21,5 @@ github - checkout
 
 GIT URL - https://github.com/mangeshh/city-connectivity-mapper/tree/master/complete
 import as maven project
+
+SWAGGER - http://localhost:8080/swagger-ui.html
