@@ -30,7 +30,7 @@ public class PathFinderResource {
 	@Autowired
 	public LRUCache lruCache;
 
-	@RequestMapping(value = "connectedV1", method = RequestMethod.GET)
+	@RequestMapping(value = "/connectedV1", method = RequestMethod.GET)
 	@HystrixCommand(fallbackMethod = "isConnectedV1Fallback", commandProperties = {
 			@HystrixProperty(name = "execution.isolation.thread.timeoutInMilliseconds", value = "20000") })
 	public String isConnectedV1(@RequestParam(name = "origin", required = true) String origin,
