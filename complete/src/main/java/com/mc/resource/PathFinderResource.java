@@ -69,16 +69,13 @@ public class PathFinderResource {
 	public String isConnectedByDisJointSet(@RequestParam(name = "origin", required = true) String origin,
 			@RequestParam(name = "destination", required = true) String destination) throws CityConnectivityException {
 		String returnResult;
-		if ((returnResult = lruCache.get(origin, destination)) != null) {
-			return returnResult;
-		}
+		 
 		if(disjointSet.findSet(origin) == disjointSet.findSet(destination)){
 			returnResult = "yes";
 		} else {
 			returnResult = "no";
 		}
- 		lruCache.put(origin, destination, returnResult);
-		return returnResult;
+ 		return returnResult;
 	}
 
 	public String isConnectedV2Fallback(String origin, String destination) {
