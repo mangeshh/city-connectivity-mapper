@@ -36,6 +36,25 @@ public class PathFinderResourceTest {
 		assertEquals("yes", result.getResponse().getContentAsString());
 	}
 	
+	
+	@Test
+	public void testIsConnectedCallV32() throws Exception {
+		
+		RequestBuilder requestBuilder = MockMvcRequestBuilders.get("/connectedV3?origin=L&destination=M").accept(MediaType.ALL);
+		MvcResult result = mvc.perform(requestBuilder).andReturn();
+		assertEquals(200, result.getResponse().getStatus());
+		assertEquals("yes", result.getResponse().getContentAsString());
+	}
+	
+	@Test
+	public void testIsConnectedCallV33() throws Exception {
+		
+		RequestBuilder requestBuilder = MockMvcRequestBuilders.get("/connectedV3?origin=L&destination=M1").accept(MediaType.ALL);
+		MvcResult result = mvc.perform(requestBuilder).andReturn();
+		assertEquals(200, result.getResponse().getStatus());
+		assertEquals("no", result.getResponse().getContentAsString());
+	}
+	
 	@Test
 	public void testIsConnectedCall2() throws Exception {
 		
@@ -56,7 +75,7 @@ public class PathFinderResourceTest {
 	
 	@Test
 	public void testIsConnectedBadReqCall() throws Exception {
-		RequestBuilder requestBuilder = MockMvcRequestBuilders.get("/connected?origin=L").accept(MediaType.ALL);
+		RequestBuilder requestBuilder = MockMvcRequestBuilders.get("/connectedV3?origin=L").accept(MediaType.ALL);
 		MvcResult result = mvc.perform(requestBuilder).andReturn();
 		assertEquals(400, result.getResponse().getStatus());
  	}

@@ -7,6 +7,7 @@ import org.springframework.context.annotation.Configuration;
 import org.springframework.context.annotation.Scope;
 
 import com.mc.cache.CityConnectivityMap;
+import com.mc.cache.DisjointSet;
 import com.mc.cache.LRUCache;
 import com.mc.loader.CacheLoader;
 
@@ -20,6 +21,12 @@ public class Configurator {
 	@Scope(value = ConfigurableBeanFactory.SCOPE_SINGLETON)
 	public CityConnectivityMap getCityConnectivityMap() {
 		return new CityConnectivityMap();
+	}
+	
+	@Bean("disjointSet")
+	@Scope(value = ConfigurableBeanFactory.SCOPE_SINGLETON)
+	public DisjointSet getDisjointSet() {
+		return new DisjointSet();
 	}
 
 	@Bean("cacheLoader")

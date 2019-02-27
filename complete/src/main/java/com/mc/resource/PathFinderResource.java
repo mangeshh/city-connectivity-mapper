@@ -15,6 +15,7 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.mc.cache.CityConnectivityMap;
+import com.mc.cache.DisjointSet;
 import com.mc.cache.LRUCache;
 import com.mc.exception.CityConnectivityException;
 import com.netflix.hystrix.contrib.javanica.annotation.HystrixCommand;
@@ -27,6 +28,9 @@ public class PathFinderResource {
 	@Autowired
 	public CityConnectivityMap citiConnectivityMap;
 
+	@Autowired
+	DisjointSet disjointSet;
+	
 	@Autowired
 	public LRUCache lruCache;
 
@@ -56,6 +60,24 @@ public class PathFinderResource {
 		}
 		returnResult = citiConnectivityMap.isConnectedQuickCheck(origin, destination);
 		lruCache.put(origin, destination, returnResult);
+		return returnResult;
+	}
+	
+	@RequestMapping(value = "/connectedV3", method = RequestMethod.GET)
+	@HystrixCommand(fallbackMethod = "isConnectedV2Fallback", commandProperties = {
+			@HystrixProperty(name = "execution.isolation.thread.timeoutInMilliseconds", value = "20000") })
+	public String isConnectedByDisJointSet(@RequestParam(name = "origin", required = true) String origin,
+			@RequestParam(name = "destination", required = true) String destination) throws CityConnectivityException {
+		String returnResult;
+		if ((returnResult = lruCache.get(origin, destination)) != null) {
+			return returnResult;
+		}
+		if(disjointSet.findSet(origin) == disjointSet.findSet(destination)){
+			returnResult = "yes";
+		} else {
+			returnResult = "no";
+		}
+ 		lruCache.put(origin, destination, returnResult);
 		return returnResult;
 	}
 

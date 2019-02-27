@@ -25,3 +25,6 @@ import as maven project
 SWAGGER - http://localhost:8080/swagger-ui.html
 
 NOTE : input file with city pairs (New York, Newak...) is specified inside application.properties ans key is cache.input.file
+
+NOTE : we also have call using disjointSet (that is connectedV3 URL)
+http://localhost:8080/connectedV3?origin=Boston&destination=Newark
