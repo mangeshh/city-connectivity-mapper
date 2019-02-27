@@ -64,7 +64,7 @@ public class PathFinderResource {
 	}
 	
 	@RequestMapping(value = "/connectedV3", method = RequestMethod.GET)
-	@HystrixCommand(fallbackMethod = "isConnectedV2Fallback", commandProperties = {
+	@HystrixCommand(fallbackMethod = "isConnectedV3Fallback", commandProperties = {
 			@HystrixProperty(name = "execution.isolation.thread.timeoutInMilliseconds", value = "20000") })
 	public String isConnectedByDisJointSet(@RequestParam(name = "origin", required = true) String origin,
 			@RequestParam(name = "destination", required = true) String destination) throws CityConnectivityException {
