@@ -78,16 +78,22 @@ public class PathFinderResource {
  		return returnResult;
 	}
 
+	
+	public String isConnectedV1Fallback(String origin, String destination) {
+		System.out.println("fallbackMethod:isConnectedFallback");
+		return "INTERNAL SERVER ERROR";
+	}
+	
 	public String isConnectedV2Fallback(String origin, String destination) {
 		System.out.println("fallbackMethod:isConnectedQuickCheckFallback");
 		return "INTERNAL SERVER ERROR";
 	}
 
-	public String isConnectedV1Fallback(String origin, String destination) {
-		System.out.println("fallbackMethod:isConnectedFallback");
+	public String isConnectedV3Fallback(String origin, String destination) {
+		System.out.println("fallbackMethod:isConnectedByDisJointSet");
 		return "INTERNAL SERVER ERROR";
 	}
-
+	
 	@RequestMapping("/test")
 	public String check() {
 		return "UP..";
